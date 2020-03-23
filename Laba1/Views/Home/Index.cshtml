@@ -1,0 +1,49 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Люди</title>
+
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-1">
+            <h3>Телефонный справочник</h3>
+            <table class="table table-striped">
+                <tr>
+                    <td>ID</td>
+                    <td>Фамилия</td>
+                    <td>Имя</td>
+                    <td>Отчество</td>
+                    <td>Телефон</td>
+                    <td></td>
+                </tr>
+                @foreach (var p in ViewBag.Persons)
+                {
+                    <tr>
+                        <td>@p.id</td>
+                        <td>@p.lastName</td>
+                        <td>@p.firstName</td>
+                        <td>@p.secondName</td>
+                        <td>@p.phone</td>
+                        <td align="center">
+                            <div class="btn-group">
+                                <a class="btn btn-default" href="/Home/Edit/@p.id">Редактировать</a>
+                                <a class="btn btn-default" href="/Home/Delete/@p.id">Удалить</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </table>
+            <a class="btn btn-default" href="/Home/Edit">Добавить запись</a>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>
