@@ -12,6 +12,19 @@
 </head>
 <body>
     <div class="row">
+        <!--Форма поиска-->
+        <form method="get" action="/Home/Index">
+            <div class="form-inline col-md-offset-1">
+                <div class="form-group col-md-8">
+                    <input type="text" name="query" value="@ViewBag.QueryString" class="form-control" style="width : 100%; max-width: 100%"/>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Поиск" class="btn btn-primary"/>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row">
         <div class="col-md-8 col-md-offset-1">
             <h3>Телефонный справочник</h3>
             <table class="table table-striped">
@@ -23,6 +36,7 @@
                     <td>Телефон</td>
                     <td></td>
                 </tr>
+                <!--Построчный вывод содержимого БД-->
                 @foreach (var p in ViewBag.Persons)
                 {
                     <tr>
@@ -40,6 +54,7 @@
                     </tr>
                 }
             </table>
+            <!--Кнопка добавления записи-->
             <a class="btn btn-default" href="/Home/Edit">Добавить запись</a>
         </div>
     </div>
